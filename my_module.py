@@ -9,15 +9,16 @@ def get_file_data(filename):
     
     stores the lines of the program with name filename as a list
     """
+    import sys
     try:
-	with open(file) as in_file:
+        with open(filename) as in_file:
             lines = []
-            for line in f:
+            for line in in_file:
                 lines.append(line.rstrip("\n"))
         return(lines)
 
     except IOError as e:
-	print("{}\n Error opening {}. Terminating program.".format(e, file),
+        print("{}\n Error opening {}. Terminating program.".format(e, filename),
               file=sys.stderr)
         sys.exit(1)
     
