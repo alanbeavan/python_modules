@@ -4,13 +4,24 @@
 
 #get_file_data - return a list of lines from a file "filename".
 def get_file_data(filename):
-    f = open(filename, "r")
-    lines = []
-    for line in f:
-        lines.append(line.rstrip("\n"))
+    """get_file_data.
+    
+    
+    stores the lines of the program with name filename as a list
+    """
+    try:
+	with open(file) as in_file:
+            lines = []
+            for line in f:
+                lines.append(line.rstrip("\n"))
+        return(lines)
 
-    f.close
-    return(lines)
+    except IOError as e:
+	print("{}\n Error opening {}. Terminating program.".format(e, file),
+              file=sys.stderr)
+        sys.exit(1)
+    
+    
 
 #Generate a random sequence of user defined length
 def generate_sequence(length):
